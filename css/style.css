@@ -1,0 +1,815 @@
+:root {
+    --bg: #0f0f14;
+    --surface: #15151d;
+    --border: #242433;
+    --text-primary: #f5f5ff;
+    --text-secondary: #a0a0c0;
+    --accent: #8b5cf6;
+    --accent-soft: rgba(139,92,246,0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Clash Display', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-weight: 500; /* Force consistent weight */
+}
+
+/* ---------- BACKGROUND GLOW ---------- */
+
+body::before {
+    content: "";
+    position: fixed;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+    z-index: -1;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 8%;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    font-family: 'Clash Display', sans-serif;
+}
+
+
+
+.logo {
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 18px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: 0s;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.navbar a {
+    position: relative;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+    width: 100%;
+}
+
+.navbar a:hover {
+    color: var(--text-primary);
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 120px 8%;
+    gap: 60px;
+}
+
+.hero-content {
+    max-width: 650px;
+    animation: fadeUp 1s ease forwards;
+}
+
+.hero-name {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 200;
+    font-size: clamp(56px, 8vw, 110px);
+    letter-spacing: -2.5px;
+    line-height: 0.85;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.hero-name::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin-top: 16px;
+}
+
+.hero-role {
+    font-weight: 500;
+    font-size: 22px;
+    margin-top: 24px;
+    color: var(--accent);
+    letter-spacing: 1px;
+}
+.hero-desc {
+    margin-top: 20px;
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.hero-buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary {
+    padding: 14px 32px;
+    background: var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--accent-soft);
+}
+
+.btn-outline {
+    padding: 14px 32px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ---------- HERO IMAGE ---------- */
+
+.hero-image img {
+    width: 340px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 60px var(--accent-soft);
+    animation: fadeIn 1.4s ease forwards;
+}
+
+/* ---------- PAGE LAYOUT ---------- */
+
+.page {
+    padding: 120px 8%;
+    animation: fadeUp 0.8s ease forwards;
+    
+}
+
+.page h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+/* ---------- SKILLS GRID ---------- */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.skills-grid div {
+    padding: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.skills-grid div:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px var(--accent-soft);
+}
+
+
+
+/* ---------- PROJECT CARDS ---------- */
+
+.project-card {
+    background: var(--surface);
+    font-family: Lucida Sans;
+    padding: 40px;
+    margin-top: 40px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 0 40px var(--accent-soft);
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 12px;
+    padding: 8px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 30px;
+    font-size: 12px;
+    color: var(--accent);
+}
+
+.project-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+.project-links a {
+    pointer-events: auto;
+}
+.project-card::before {
+    pointer-events: none;
+}
+
+.project-images {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap; /* allows clean wrapping */
+}
+
+.project-images img {
+    width: 100%;
+    max-width: 280px;  /* BIGGER */
+    height: 180px;     /* BIGGER */
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.project-images img:hover {
+    transform: scale(1.05);
+}
+
+.project-tags {
+    margin-top: 10px;
+}
+
+.project-section {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    font-family: Verdana;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--accent);
+    position: relative;
+}
+
+/* underline separator */
+.project-section::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin-top: 8px;
+    border-radius: 10px;
+}
+
+/* ---------- LEETCODE PROFILE BOX ---------- */
+
+.leetcode-profile {
+    background: var(--surface);
+    padding: 40px;
+    margin-top: 40px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.leetcode-profile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FFA116, #FF6B35, #F7931E);
+}
+
+.leetcode-profile:hover {
+    transform: translateY(-6px);
+    border-color: #FFA116;
+    box-shadow: 0 0 40px rgba(255, 161, 22, 0.15);
+}
+
+.leetcode-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.leetcode-icon img {
+    filter: brightness(0) invert(1);
+}
+
+.leetcode-title h2 {
+    font-family: sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.leetcode-title p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin: 5px 0 0 0;
+}
+
+.leetcode-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 161, 22, 0.05);
+    border: 1px solid rgba(255, 161, 22, 0.2);
+    border-radius: 12px;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: #FFA116;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.leetcode-links {
+    text-align: center;
+}
+
+/* ---------- CONTACT GRID (Matches About) ---------- */
+
+.contact-intro {
+    margin-top: 10px;
+    font-family: sans-serif;
+    color: var(--text-secondary);
+    margin-bottom: 50px;
+}
+.page h1 {
+    font-family: sans-serif;
+}
+.about-text h2{
+  font-family: sans-serif;
+}
+.contact-grid {
+    font-family: sans-serif;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.contact-card {
+    display: block;
+    padding: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.contact-card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.contact-card p {
+    color: var(--text-secondary);
+    word-break: break-word;
+}
+
+/* Subtle hover (same as skills) */
+
+.contact-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(139,92,246,0.15);
+    transform: translateY(-4px);
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image img {
+        width: 260px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+/* ---------- ABOUT SECTION (FIXED - MATCHES DESIGN) ---------- */
+
+#about {
+  padding: 120px 8%;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.about-container {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 3;
+  max-width: 650px;
+}
+
+.about-text h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.about-text p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.goal {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.personality {
+  color: var(--text-primary);
+}
+
+/* ---------- SKILLS ---------- */
+
+.skills {
+  flex: 1;
+  min-width: 300px;
+}
+
+.skills h3 {
+  margin-bottom: 25px;
+  font-size: 22px;
+}
+
+.skill {
+  margin-bottom: 20px;
+}
+
+.skill span {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.progress {
+  height: 6px;
+  background: var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #6366f1);
+  border-radius: 20px;
+  transition: width 0.6s ease;
+  width:0;
+}
+
+/* ---------- ABOUT RIGHT SIDE ---------- */
+
+.about-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* PROFILE IMAGE */
+
+.about-image img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 40px var(--accent-soft);
+}
+
+/* ---------- STATS ---------- */
+
+.stats {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 120px;
+  background: var(--surface);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.stat-card h3 {
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.stat-card p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px var(--accent-soft);
+}
+
+/* ---------- SKILL ICONS ---------- */
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.skill-header img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.skill-header span {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* LEFT SIDE */
+
+.about-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* RIGHT SIDE */
+
+.about-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* IMAGE */
+
+.about-image img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+}
+
+/* KEEP TOP ALIGNMENT */
+
+.about-container {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.about-points {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.about-points li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* custom bullet (glow dot) */
+.about-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-soft);
+}
+.about-extra {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.about-extra li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* GOAL (green accent) */
+.about-extra .goal::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(111, 69, 208, 0.15);
+}
+
+/* PERSONALITY (yellow accent) */
+.about-extra .personality::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  background: #facc15;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(250,204,21,0.4);
+}
+.contact-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-header i {
+  font-size: 22px;
+}
+.project-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.project-tags {
+    margin-top: 10px;
+}
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(139,92,246,0.15), transparent 70%);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* ---------- RESPONSIVE FOR LEETCODE PROFILE ---------- */
+
+@media (max-width: 768px) {
+    .leetcode-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .leetcode-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .stat-item {
+        padding: 15px;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .leetcode-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .leetcode-profile {
+        padding: 30px 20px;
+    }
+}
