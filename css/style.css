@@ -530,7 +530,7 @@ body::before {
 }
 
 .highlight {
-  color: var(--accent);
+  color: white;
   font-weight: 500;
   margin-bottom: 20px;
   font-size: 20px;
@@ -723,20 +723,6 @@ body::before {
   border-radius: 50%;
   box-shadow: 0 0 10px var(--accent-soft);
 }
-.about-extra {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.about-extra li {
-  position: relative;
-  padding-left: 22px;
-  margin-bottom: 14px;
-  line-height: 1.7;
-  color: var(--text-secondary);
-}
-
 /* GOAL (green accent) */
 .about-extra .goal::before {
   content: "";
